@@ -43,5 +43,11 @@ public class App {
       a3.checkBalance();
       System.out.println(a3.toString());
 
+      Product p1 = new Product("Camera", "this is disc", 30, 10, 3, "red");
+      Product p2 = new Product("T-shirt", "size", 15);
+      p2.display();
+
+      Product p3 = new Product();
+      p3.display();
     }
 }
