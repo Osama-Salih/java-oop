@@ -1,22 +1,40 @@
 public class App {
 
-  static int x;
+  // static int x;
       
-  static {
-    x = 5;
-    System.out.println("static block");
-  }
-  static {
-    x = 15;
-    System.out.println("static block");
-  }
+  // static {
+  //   x = 5;
+  //   System.out.println("static block");
+  // }
+  // static {
+  //   x = 15;
+  //   System.out.println("static block");
+  // }
 
+    public static void fun(Test n) {
+      n.number++;
+    }
     public static void main(String[] args) throws Exception {
+
+      // Test obj = new Test();
+      // obj.number = 1;
+      // fun(obj);
+      // System.out.println("Number = " + obj.number); // 2
+
+      Math n1 = new Math(2);
+      Math n2 = new Math(2);
+      Math n3 = n1.add(n2);
+      // System.out.println("n1 + n2 = " + n3.val );
+
+
+      System.out.println(n1.isEqual(n2));
+
       // Student s1 = new Student("a", "123");
       // System.out.println(x);
 
-      OuterClass.InnerClass p = new OuterClass.InnerClass();
-      p.print();
+      // OuterClass.InnerClass p = new OuterClass.InnerClass();
+      // p.print();
+
 
       
       //  Car c1 = new Car();
