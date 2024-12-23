@@ -1,4 +1,4 @@
-public class Student1 {
+final public class Student1 {
     final int STUDENT_ID;
     String name;
     int yearOfBirth; 
@@ -18,7 +18,7 @@ public class Student1 {
 
 
     @Override
-    public String toString() {
+   final public String toString() {
         return "Student1 [STUDENT_ID=" + STUDENT_ID + ", name=" + name + ", yearOfBirth=" + yearOfBirth + "]";
     }
 }
