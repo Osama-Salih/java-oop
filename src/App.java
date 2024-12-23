@@ -1,22 +1,10 @@
 public class App {
-    static void p(Employee1 el) {
-        el.print();
-    }
     public static void main(String[] args) throws Exception {
-       Employee1 refArray[] = new Employee1[4];
+        Student1 s1 = new Student1(123, "ali", 2000);
+        Student1 s2 = new Student1(123, "ali", 2000);
+        Student1 s3 = new Student1(123, "ali", 2000);
+        Student1 s4 = new Student1(123, "ali", 2000);
 
-       refArray[0] = new Employee1();
-       refArray[1] = new SalariedEmployee();
-       refArray[2] = new DailyEmployee();
-       refArray[3] = new HourlyEmployee();
-
-    //    for (int i = 0; i < refArray.length; i++) {
-    //     refArray[i].print();
-    //    }
-
-       for (Employee1 em : refArray) {
-        // em.print();
-        p(em);
-       }
+        System.out.println(s4.STUDENT_ID);
     }
 }
