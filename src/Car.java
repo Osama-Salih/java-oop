@@ -1,28 +1,46 @@
-public class Car {
-   private String name;
-   private int maxSpeed;
-   private float price;
-   private int model;
+abstract public class Car {
+    float height;
+    float weight;
+    int numberOfWheels;
 
-  public void setName(String newName) {
-        name = newName;
-    }
+   
+    public Car() {}
 
-    public String getName() {
-        return name;
-    }
-
-    public  void setModel(int m) {
-        if (m >= 2015)
-             model = m;
-        else 
-            System.out.println("Sorry, we do not accept this model");
-    }
-
-    public int getModel() {
-        return model;
-    }
+   
+    public Car(float height, float weight, int numberOfWheels) {
+    this.height = height;
+    this.weight = weight;
+    this.numberOfWheels = numberOfWheels;
 }
 
 
+    public float getHeight() {
+        return height;
+    }
 
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public float getNumberOfWheels() {
+        return numberOfWheels;
+    }
+
+    public void setNumberOfWheels(int numberOfWheels) {
+        this.numberOfWheels = numberOfWheels;
+    }
+
+    abstract void autopilot();
+
+    abstract void streamingServices();
+
+    abstract void parkingSeensors();
+}
