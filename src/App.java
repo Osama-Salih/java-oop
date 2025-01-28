@@ -1,43 +1,25 @@
-import java.time.DayOfWeek;
-import java.time.Month;
-
 public class App {
+
+    enum WeekDays {
+        MONDAY, TUESDAY, WEDENSDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+    }
     public static void main(String[] args) {
-    
-       enum WeekDays {
-        MONDAY("Working day") {
-            @Override
-            public void testMethod() {
-                System.out.println("MONDAY method");
-            }
-        }, TUESDAY {
-            @Override
-            public void testMethod() {
-                System.out.println("TUESDAY method");
-            }
-         }; // WEDNESDAY, THURSDAY, FRIDAY("Day off"), SATURDAY;
+    //    Order order1 = new Order();
+    //    order1.setStatus(Order.OrderStatus.DELIVERING);
+    //    System.out.println(order1.isDeliverable());
 
-        private String status;
-        WeekDays(String status) {
-            this.status = status;
-        }
+    // System.out.println(WeekDays.MONDAY.ordinal()); 
+        // System.out.println(WeekDays.SUNDAY.compareTo(WeekDays.WEDENSDAY));
+        // System.out.println(WeekDays.MONDAY.toString() == "MONDAY");
+        // System.out.println(WeekDays.MONDAY.name() == "MONDAY");
+        // System.out.println(WeekDays.valueOf("MONDAY"));
+        // for(WeekDays day : WeekDays.values()) {
+        //     System.out.println(day);
+        // }
+        // System.out.println(Arrays.toString(WeekDays.values()));
+        // System.out.println(Arrays.toString(WeekDays.values()));
 
-        WeekDays() {}
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public abstract void testMethod();
-    };
-
-    // WeekDays.TUESDAY.testMethod();
-    System.out.println(DayOfWeek.FRIDAY);
-    System.out.println(Month.JANUARY);
- }  
-
+        WeekDays day1 = WeekDays.FRIDAY;
+        System.out.println(day1 == WeekDays.FRIDAY);
+    }  
 }
