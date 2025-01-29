@@ -1,54 +1,55 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class App {
     public static void main(String[] args) {
         
-        int val = Integer.parseInt("string49");
-        System.out.println(val);
-        System.out.println(1);
-        System.out.println(2);
-        
         try {
-            int arr[] = new int[5];
-            arr[10] = 7 / 0;
+            readFile("C:\\Osama\\Name.txt");
+        } catch (FileNotFoundException e) {}
+        catch (IOException e) {}
+    
+    
+    // static void readFile(String filePath) {
+    //     try {
+    //         FileReader reader = new FileReader(filePath); 
+    //     } catch (IOException e) {
+    //         System.out.print(e);
+    //     }
+    // }
 
-            System.out.println("Hi 1");
-            System.out.println("Hi 2");
-            System.out.println("Hi 3");
-        } 
-        catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("ArrayIndexOutOfBoundsException | ArithmeticException");
-        }
-        catch (Exception e) {
-            System.out.println("Exception");
-        }
-
+    static void readMultiFile(String filePath) throws FileNotFoundException, IOException {
         try {
-            int arr[] = new int[5];
-            arr[7] = 5;
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println(ex);
-            return;
-        } finally {
-            System.out.println("finally");
-        }
-
-        try {
-            int arr[] = new int[5];
-            arr[7] = 5;
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println(ex);
-            System.exit(0);
-        } finally {
-            System.out.println("finally");
-        }
-        System.out.println(getNumber());
+            readFile("C:\\Osama\\Name.txt");
+        } catch (FileNotFoundException e) {}
+        catch (IOException e) {}
     }
-    static int getNumber() {
+
+    static void readFile(String filePath) throws FileNotFoundException, IOException {
+        FileInputStream fin = null;
         try {
-            return 1;
-        } catch(Exception e) {
-            return 2;
+            fin = new FileInputStream(filePath);
+            System.out.print("file content: ");
+            int r = 0;
+
+            while((r = fin.read()) != -1) {
+                System.out.print((char) r);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.print(e);
+        }
+        catch (IOException e) {
+            System.out.print(e);
         } finally {
-            return 3;
+             if (fin != null) {
+                try {
+                    fin.close();
+                } catch (IOException e) {
+                    System.out.println(e);
+                }
+             }
         }
     }
 }
