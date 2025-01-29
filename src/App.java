@@ -1,25 +1,24 @@
+import java.util.EnumSet;
+import java.util.EnumMap;
+
 public class App {
 
     enum WeekDays {
         MONDAY, TUESDAY, WEDENSDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
     }
     public static void main(String[] args) {
-    //    Order order1 = new Order();
-    //    order1.setStatus(Order.OrderStatus.DELIVERING);
-    //    System.out.println(order1.isDeliverable());
+         EnumSet<WeekDays> days1 = EnumSet.range(WeekDays.WEDENSDAY, WeekDays.FRIDAY);
 
-    // System.out.println(WeekDays.MONDAY.ordinal()); 
-        // System.out.println(WeekDays.SUNDAY.compareTo(WeekDays.WEDENSDAY));
-        // System.out.println(WeekDays.MONDAY.toString() == "MONDAY");
-        // System.out.println(WeekDays.MONDAY.name() == "MONDAY");
-        // System.out.println(WeekDays.valueOf("MONDAY"));
-        // for(WeekDays day : WeekDays.values()) {
-        //     System.out.println(day);
-        // }
-        // System.out.println(Arrays.toString(WeekDays.values()));
-        // System.out.println(Arrays.toString(WeekDays.values()));
+         EnumSet<WeekDays> days2 = EnumSet.noneOf(WeekDays.class);
+         days2.add(WeekDays.MONDAY);
+         days2.addAll(days1);
+         days2.remove(WeekDays.MONDAY);
+         days2.removeAll(days1);
+         System.out.println(days2);
 
-        WeekDays day1 = WeekDays.FRIDAY;
-        System.out.println(day1 == WeekDays.FRIDAY);
+        EnumMap<WeekDays, String> daysMap = new EnumMap<>(WeekDays.class);
+        daysMap.put(WeekDays.MONDAY, "Working day");
+        daysMap.put(WeekDays.SUNDAY, "Working day");
+        System.out.println(daysMap);
     }  
 }
