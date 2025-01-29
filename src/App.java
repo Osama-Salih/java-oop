@@ -1,24 +1,54 @@
-import java.util.EnumSet;
-import java.util.EnumMap;
-
 public class App {
-
-    enum WeekDays {
-        MONDAY, TUESDAY, WEDENSDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
-    }
     public static void main(String[] args) {
-         EnumSet<WeekDays> days1 = EnumSet.range(WeekDays.WEDENSDAY, WeekDays.FRIDAY);
+        
+        int val = Integer.parseInt("string49");
+        System.out.println(val);
+        System.out.println(1);
+        System.out.println(2);
+        
+        try {
+            int arr[] = new int[5];
+            arr[10] = 7 / 0;
 
-         EnumSet<WeekDays> days2 = EnumSet.noneOf(WeekDays.class);
-         days2.add(WeekDays.MONDAY);
-         days2.addAll(days1);
-         days2.remove(WeekDays.MONDAY);
-         days2.removeAll(days1);
-         System.out.println(days2);
+            System.out.println("Hi 1");
+            System.out.println("Hi 2");
+            System.out.println("Hi 3");
+        } 
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException | ArithmeticException");
+        }
+        catch (Exception e) {
+            System.out.println("Exception");
+        }
 
-        EnumMap<WeekDays, String> daysMap = new EnumMap<>(WeekDays.class);
-        daysMap.put(WeekDays.MONDAY, "Working day");
-        daysMap.put(WeekDays.SUNDAY, "Working day");
-        System.out.println(daysMap);
-    }  
+        try {
+            int arr[] = new int[5];
+            arr[7] = 5;
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println(ex);
+            return;
+        } finally {
+            System.out.println("finally");
+        }
+
+        try {
+            int arr[] = new int[5];
+            arr[7] = 5;
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println(ex);
+            System.exit(0);
+        } finally {
+            System.out.println("finally");
+        }
+        System.out.println(getNumber());
+    }
+    static int getNumber() {
+        try {
+            return 1;
+        } catch(Exception e) {
+            return 2;
+        } finally {
+            return 3;
+        }
+    }
 }
