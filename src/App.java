@@ -1,55 +1,32 @@
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        // The Character size in java is 2 bytes
+        // System.out.println("Character size: " + Character.SIZE / 8);
+        // System.out.println("String size: " + "a".getBytes().length);
+
+        File f = new File("a.txt");
+        // FileInputStream fis = new FileInputStream("a.txt");
+        FileInputStream fis = new FileInputStream(f);
+
+        // byte b[] = new byte[3];
+        byte b[] = new byte[(int)f.length()];
+        fis.read(b);
+        // System.out.println((char)b[0]);
+        String s = new String(b);
+        System.out.println(s);
+        fis.close();
+        // int data;
+        // while((data = fis.read()) != -1) {
+        //     System.out.println((char) data);
+        // }
         
-        try {
-            readFile("C:\\Osama\\Name.txt");
-        } catch (FileNotFoundException e) {}
-        catch (IOException e) {}
-    
-    
-    // static void readFile(String filePath) {
-    //     try {
-    //         FileReader reader = new FileReader(filePath); 
-    //     } catch (IOException e) {
-    //         System.out.print(e);
-    //     }
-    // }
-
-    static void readMultiFile(String filePath) throws FileNotFoundException, IOException {
-        try {
-            readFile("C:\\Osama\\Name.txt");
-        } catch (FileNotFoundException e) {}
-        catch (IOException e) {}
-    }
-
-    static void readFile(String filePath) throws FileNotFoundException, IOException {
-        FileInputStream fin = null;
-        try {
-            fin = new FileInputStream(filePath);
-            System.out.print("file content: ");
-            int r = 0;
-
-            while((r = fin.read()) != -1) {
-                System.out.print((char) r);
-            }
-        } catch (FileNotFoundException e) {
-            System.out.print(e);
-        }
-        catch (IOException e) {
-            System.out.print(e);
-        } finally {
-             if (fin != null) {
-                try {
-                    fin.close();
-                } catch (IOException e) {
-                    System.out.println(e);
-                }
-             }
-        }
+        // System.out.println((char)fis.read());
+        // System.out.println((char)fis.read());
+        // System.out.println(fis.read());
     }
 }
