@@ -1,55 +1,38 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
-import java.util.regex.Pattern;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class App {
-    public static void main(String[] args) throws IOException {
-        FileWriter fr = new FileWriter("abc.txt");
-       PrintWriter pr = new PrintWriter(fr, true);
+    public static void main(String[] args) throws IOException, ClassNotFoundException{
+       File file = new File("Student.txt");
+    //    Student2 s1 = new Student2(111, "osama", 100);
+    // ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+    // oos.writeObject(s1);
+   
+        // ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+        // Student2 s2 = (Student2)ois.readObject();
 
-       pr.println(98);
-       pr.write(98);
-       pr.print("BBB");
-       pr.print('C');
-       pr.print(true);
- 
-       pr.flush();
-       pr.close();
+        // Reading and writing arrays of objects
+       ArrayList<Student2> studentList = new ArrayList<>();
+       Student2 s1 = new Student2(222,"Ali", 99);
+       Student2 s2 = new Student2(333,"omar", 98);
+       studentList.add(s1);
+       studentList.add(s2);
+       ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+       oos.writeObject(studentList);
 
-        File file = new File("test.txt");
-        Scanner scan = new Scanner("AAA, BBB, CCC");
-        scan.useDelimiter(",");
-        System.out.println(scan.delimiter());
-        System.out.println(scan.delimiter());
+       ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
 
-        while(scan.hasNext())
-            System.out.println(scan.next());
+       @SuppressWarnings("unchecked")
+    ArrayList<Student2> studentListRead = (ArrayList<Student2>)ois.readObject();
 
-        File file1 = new File("test.txt");
-        Scanner scan1 = new Scanner(file1);
-
-        while(scan1.hasNextLine()) {
-            parseLine(scan1.nextLine());
-        }
-     }
-
-    static void parseLine(String str) {
-        String name, address, phone;
-        Scanner sc = new Scanner(str);
-        sc.useDelimiter(",");
-        
-        while(sc.hasNext()) {
-            name = sc.next();
-            address = sc.next();
-            phone = sc.next();
-            System.out.println("Name: " + name + " Address: " + address + " Phone: " + phone);
-        }
-        sc.close();
+       for (Student2 s: studentListRead) {
+        System.out.println(s);
+       }
     }
- }  
+
+}
