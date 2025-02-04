@@ -1,59 +1,55 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.PrintWriter;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class App {
     public static void main(String[] args) throws IOException {
-        // String s = "Hello";
+        FileWriter fr = new FileWriter("abc.txt");
+       PrintWriter pr = new PrintWriter(fr, true);
 
-        // Writer writer = new OutputStreamWriter(new FileOutputStream("test.txt"));
-        // writer.write(s);
-        // writer.flush();
-        // writer.close();
+       pr.println(98);
+       pr.write(98);
+       pr.print("BBB");
+       pr.print('C');
+       pr.print(true);
+ 
+       pr.flush();
+       pr.close();
 
-    //  String s = "Hello";
-    //  FileWriter fr = new FileWriter("test.txt");
-    //  fr.write("AA");
-    //  fr.write("\n");
-    //  fr.write("BB");
-    //  fr.close();
+        File file = new File("test.txt");
+        Scanner scan = new Scanner("AAA, BBB, CCC");
+        scan.useDelimiter(",");
+        System.out.println(scan.delimiter());
+        System.out.println(scan.delimiter());
 
+        while(scan.hasNext())
+            System.out.println(scan.next());
+
+        File file1 = new File("test.txt");
+        Scanner scan1 = new Scanner(file1);
+
+        while(scan1.hasNextLine()) {
+            parseLine(scan1.nextLine());
+        }
+     }
+
+    static void parseLine(String str) {
+        String name, address, phone;
+        Scanner sc = new Scanner(str);
+        sc.useDelimiter(",");
         
-    // FileOutputStream fos = new FileOutputStream("test.txt");
-    // String s = "Hello";
-    // byte b[] = s.getBytes();
-    // fos.write(b);
-    // fos.close();
-
-    // String s = "Hello osama";
-    // FileWriter fr = new FileWriter("test.txt");
-    // fr.write(s, 1, 2);
-    // fr.write('97);
-    // fr.write('b');
-    // fr.write("AA");
-    // fr.write("\n");
-    // fr.write("BB");
-    // fr.close();
-
-    // File file = new File("test.txt");
-    // FileReader fr = new FileReader(file);
-    // int i;
-    // while ((i = fr.read()) != -1) {
-    //     System.out.print(i);
-    // }
-    // }
-    File file = new File("test.txt");
-    FileReader fr = new FileReader(file);
-
-    char ch[] = new char[(int)file.length()];
-    fr.read(ch);
-    for (char c : ch) {
-        System.out.print(c);
+        while(sc.hasNext()) {
+            name = sc.next();
+            address = sc.next();
+            phone = sc.next();
+            System.out.println("Name: " + name + " Address: " + address + " Phone: " + phone);
+        }
+        sc.close();
     }
-    fr.close();
-}
-}
+ }  
